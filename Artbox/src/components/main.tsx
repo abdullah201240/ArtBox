@@ -6,7 +6,7 @@ const Main = (props : any) => {
   const [selectedPlan, setSelectedPlan] = useState('Basic');
 
   const handleClose = () => {
-    props.navigation.navigate('Signup')
+    props.navigation.navigate('Middle')
   };
 
   return (
