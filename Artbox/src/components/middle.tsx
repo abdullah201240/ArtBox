@@ -24,7 +24,7 @@ const GradientText: React.FC<GradientTextProps> = ({ text, style }) => (
     </MaskedView>
 );
 
-const Middle = () => {
+const Middle = (props: any) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" />
@@ -41,17 +41,17 @@ const Middle = () => {
             />
             <Image
                 source={require('../../assets/logo.png')}
+                style={styles.logo}
+
+                
             />
-            <TouchableOpacity style={styles.button} onPress={() => { /* Handle sign up */ }}>
+            <TouchableOpacity style={styles.button} onPress={() => { props.navigation.navigate('Signup') }}>
                 <Text style={styles.buttonText}>Sign up with email</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button1} onPress={() => { /* Handle sign in */ }}>
+            <TouchableOpacity style={styles.button1} onPress={() => { props.navigation.navigate('Signin') }}>
                 <Text style={styles.buttonText1}>Sign in</Text>
             </TouchableOpacity>
-            <GradientText
-                text="By creating an account or signing in you agree to our Terms and Conditions"
-                style={styles.footerText}
-            />
+            
         </View>
     );
 };
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'bold',
         color: '#fff',
-        marginTop: '30%',
+        marginTop: '10%',
         marginRight: '40%',
     },
     button: {
@@ -89,21 +89,22 @@ const styles = StyleSheet.create({
         height: 70,
         width: "100%",
         borderRadius: 50,
-        backgroundColor: 'gray',
+        backgroundColor: '#262733',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
-        borderColor: '#888',
-        borderWidth: 0.5,
+        
     },
     buttonText: {
-        fontSize: 18,
+        fontSize: 24,
+        fontWeight: 'bold',
         textAlign: 'center',
         color: 'white',
         backgroundColor: 'transparent',
     },
     buttonText1: {
-        fontSize: 18,
+        fontSize: 24,
+        fontWeight: 'bold',
         textAlign: 'center',
         color: 'white',
         backgroundColor: 'transparent',
@@ -113,4 +114,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#fff',
     },
+    logo:{
+        width: '60%', 
+    height: '50%',
+    }
 });
