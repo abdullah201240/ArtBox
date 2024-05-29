@@ -26,7 +26,7 @@ const GradientText: React.FC<GradientTextProps> = ({ text, style }) => (
 );
 
 
-const Signin = () => {
+const Signin = (props: any) => {
 
 
 
@@ -109,7 +109,7 @@ const Signin = () => {
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
 
-            <TouchableOpacity style={styles.button} onPress={() => { /* Handle sign up */ }}>
+            <TouchableOpacity style={styles.button} onPress={() => {props.navigation.navigate('Home') }}>
                 <RNText style={styles.buttonText}>Sign in</RNText>
             </TouchableOpacity>
             
@@ -130,6 +130,8 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#000',
         justifyContent: 'center',
+        
+
     },
     background: {
         position: 'absolute',
