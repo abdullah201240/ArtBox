@@ -22,11 +22,11 @@ const GradientText: React.FC<GradientTextProps> = ({ text, style }) => (
       </LinearGradient>
   </MaskedView>
 );
-const Home = () => {
+const Home = (props: any) => {
   return (
     <View style={styles.container}>
       <LinearGradient
-                colors={['black', '#302b63', '#302b63', 'black', 'black', 'black']}
+                colors={['black','black', 'black', 'black', '#302b63', '#302b63']}
                 style={StyleSheet.absoluteFill}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
@@ -34,43 +34,46 @@ const Home = () => {
       <View style={styles.header}>
         <Image source={require('../../assets/logo.png')} style={styles.logo} />
         <Text style={styles.headerText}>ArtBox</Text>
-        <TouchableOpacity style={styles.upgradeButton}>
-          <Text style={styles.upgradeButtonText}>Upgrade</Text>
+        <TouchableOpacity style={styles.upgradeButton} onPress={() => {props.navigation.navigate('Opening') }}>
+        <GradientText
+                text={`Upgrade`}
+                style={styles.upgradeButtonText}
+            />
         </TouchableOpacity>
       </View>
       <View style={styles.promptContainer}>
+        <Text  style={styles.input1}>Enter Prompt</Text>
         <TextInput
           style={styles.input}
-          placeholder="Type here a detailed description of what you want to see in your artwork"
+          placeholder="Type here a detailed description of what  you want to see in your artwork"
           placeholderTextColor="#888"
         />
-        <TouchableOpacity style={styles.surpriseMeButton}>
-          <Text style={styles.surpriseMeText}>Surprise me</Text>
-        </TouchableOpacity>
+       
       </View>
       <View style={styles.optionsContainer}>
+
+
         <TouchableOpacity style={styles.optionButton}>
-          <Text style={styles.optionText}>Style</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionButton}>
-          <Text style={styles.optionText}>Stable Diff.</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionButton}>
+
           <Text style={styles.optionText}>Advance</Text>
+          <Icon name="add-circle-outline" size={20} color="#fff" style={styles.optionIcon} />
+
         </TouchableOpacity>
       </View>
       <View style={styles.createButtonContainer}>
-        <Button title="Create" onPress={() => {}} />
+      <TouchableOpacity style={styles.createButton}>
+        <GradientText
+                text={`Create`}
+                style={styles.buttonText}
+            />
+        </TouchableOpacity>
       </View>
       <View style={styles.bottomNav}>
         <TouchableOpacity style={styles.navButton}>
           <Icon name="add-circle-outline" size={30} color="#fff" />
           <Text style={styles.navText}>Create Art</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton}>
-          <Icon name="storefront-outline" size={30} color="#fff" />
-          <Text style={styles.navText}>AI Store</Text>
-        </TouchableOpacity>
+       
         <TouchableOpacity style={styles.navButton}>
           <Icon name="person-outline" size={30} color="#fff" />
           <Text style={styles.navText}>Profile</Text>
@@ -100,51 +103,81 @@ const styles = StyleSheet.create({
     marginLeft: 10,  
   },
   promptContainer: {
-    backgroundColor: '#111',
     padding: 16,
-    borderRadius: 10,
+    borderRadius: 30,
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#608cfb',
+    height:'26%'
   },
   input: {
     color: '#fff',
     fontSize: 16,
   },
-  surpriseMeButton: {
-    marginTop: 10,
-    alignSelf: 'flex-start',
-    backgroundColor: '#333',
-    padding: 10,
-    borderRadius: 5,
-  },
-  surpriseMeText: {
+  input1: {
     color: '#fff',
+    fontSize: 20,
   },
+  
   optionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 50,
+    marginTop:"20%"
+
   },
   optionButton: {
     flex: 1,
     backgroundColor: '#333',
     padding: 15,
     margin: 5,
-    borderRadius: 10,
+    borderRadius: 20,
     alignItems: 'center',
+    flexDirection: 'row',
+    marginBottom: 50,
+
   },
   optionText: {
     color: '#fff',
+    fontSize: 25,
+    marginLeft: '30%',
+
+  },
+  optionIcon: {
+    height:'100%',
+    marginLeft: 10,
+    marginTop: 10,
+
   },
   createButtonContainer: {
     marginBottom: 20,
+  },
+  createButton:{
+    backgroundColor: 'blue',
+    padding: 15,
+    borderRadius: 25,
+    alignItems: 'center',
+    width: '100%',
+    marginVertical: 25,
+
+  },
+  buttonText: {
+    fontSize: 30,
+    color: 'white',
+    fontWeight: 'bold',
+    
   },
   bottomNav: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#222',
-    paddingVertical: 10,
-    borderRadius: 10,
+    paddingVertical: 15,
+    borderRadius: 50,
+    position: 'absolute',
+    bottom: 30,
+    width: '100%',
+    marginLeft:'5%'
   },
   navButton: {
     alignItems: 'center',
@@ -163,7 +196,7 @@ const styles = StyleSheet.create({
     borderColor: '#608cfb',
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 5,
+    borderRadius: 50,
   },
   upgradeButtonText: {
     color: 'white',
@@ -172,3 +205,6 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+
+
+
